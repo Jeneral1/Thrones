@@ -12,12 +12,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModel
 import com.zatec.thrones.screens.GetHousesScreen
+import com.zatec.thrones.screens.ViewHouseScreen
 import com.zatec.thrones.ui.theme.ThronesTheme
 import com.zatec.thrones.viewModel.HousesViewModel
+import com.zatec.thrones.viewModel.ViewHouseVM
 
 class MainActivity : ComponentActivity() {
-    val housesViewModel: HousesViewModel by viewModels()
+    val housesViewModel: ViewHouseVM by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -38,7 +41,7 @@ class MainActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyGotApp(modifier: Modifier = Modifier, viewModel: HousesViewModel) {
+fun MyGotApp(modifier: Modifier = Modifier, viewModel: ViewHouseVM) {
     Scaffold(
         topBar = {
             TopAppBar (title = {
@@ -52,7 +55,7 @@ fun MyGotApp(modifier: Modifier = Modifier, viewModel: HousesViewModel) {
             modifier = modifier.fillMaxSize().padding(it),
             color = MaterialTheme.colorScheme.background
         ) {
-            GetHousesScreen(viewModel = viewModel, onItemClick = {})
+            ViewHouseScreen(viewModel, "https://www.anapioficeandfire.com/api/houses/10")
         }
     }
 }

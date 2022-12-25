@@ -25,11 +25,3 @@ data class House(
     val overlord: String,
 )
 
-data class Character (
-    @field: Json(name = "url")
-    val url: String,
-    @field: Json(name = "name")
-    val name: String,
-    @field: Json(name = "gender")
-    val gender: String,
-)
