@@ -13,12 +13,12 @@ class HousesSource: PagingSource<Int, House>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, House> {
         return try {
-            val page = params.key?: 0
+            val page = params.key?: 1
             val houseList = RetrofitClient.apiService.getHousesList(page = page)
 
             LoadResult.Page(
                 data = houseList,
-                prevKey = if(page==0) null else page-1,
+                prevKey = if(page==1) null else page-1,
                 nextKey = if(houseList.isEmpty()) null else page +1
             )
         }catch (e: IOException){

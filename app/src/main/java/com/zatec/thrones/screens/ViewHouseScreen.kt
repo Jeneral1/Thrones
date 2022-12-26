@@ -75,9 +75,9 @@ fun ViewHouseScreen(vm: ViewHouseVM = ViewHouseVM(), houseId: String){
                     RowCard(title = "Region", value = vm.region)
                     RowCard(title = "Coat of Arms", value = vm.coatOfArms)
                     RowCard(title = "Slogan", value = vm.words)
-                    GetCharacter(vm, title = "Current Lord", url = vm.currentLord)
-                    GetCharacter(vm, title = "Heir", url = vm.heir)
-                    GetHouse( title = "Overlord", url = vm.overlord)
+                    RowCard(title = "Current Lord", value = vm.currentLord)
+                    RowCard(title = "Heir", value = vm.heir)
+                    RowCard(title = "Overlord", value = vm.overlord)
 
                     val titles: List<String> = vm.titles.removeSurrounding("[","]").split(",")
                     RowCard(title = "Titles", value = titles)
@@ -161,24 +161,6 @@ fun RowCard(title: String, value: List<String>){
         }
 
     }
-}
-
-@Composable
-fun GetCharacter(vm: ViewHouseVM = ViewHouseVM(), title: String, url: String){
-    LaunchedEffect(key1 = Unit, block = {
-        vm.getCharacter(url)
-    })
-
-    RowCard(title = title, value = vm.cName)
-}
-
-@Composable
-fun GetHouse(vm: ViewHouseVM = ViewHouseVM(), title: String, url: String){
-    LaunchedEffect(key1 = Unit, block = {
-        vm.getHouse(url)
-    })
-
-    RowCard(title = title, value = vm.name)
 }
 
 @Composable

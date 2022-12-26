@@ -21,10 +21,12 @@ import androidx.navigation.navArgument
 import com.zatec.thrones.screens.GetHousesScreen
 import com.zatec.thrones.screens.ViewHouseScreen
 import com.zatec.thrones.ui.theme.ThronesTheme
+import com.zatec.thrones.viewModel.HousesViewModel
 import com.zatec.thrones.viewModel.ViewHouseVM
 
 class MainActivity : ComponentActivity() {
-    val housesViewModel: ViewHouseVM by viewModels()
+    private val viewHouseVM: ViewHouseVM by viewModels()
+    private val housesViewModel: HousesViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -34,7 +36,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MyGotApp(viewModel = housesViewModel)
+                    MyGotApp(viewHouseVM = viewHouseVM, housesViewModel = housesViewModel)
                 }
             }
         }
@@ -45,7 +47,7 @@ class MainActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyGotApp(modifier: Modifier = Modifier, viewModel: ViewHouseVM = ViewHouseVM()) {
+fun MyGotApp(modifier: Modifier = Modifier, viewHouseVM: ViewHouseVM, housesViewModel: HousesViewModel) {
     val navController = rememberNavController()
 
     Scaffold(
@@ -63,19 +65,20 @@ fun MyGotApp(modifier: Modifier = Modifier, viewModel: ViewHouseVM = ViewHouseVM
                 .padding(it),
             color = MaterialTheme.colorScheme.background
         ) {
-            GoTNavHost(navHostController = navController)
+            GoTNavHost(navHostController = navController, viewHouseVM, housesViewModel)
         }
     }
 }
 
 @Composable
-fun  GoTNavHost(navHostController: NavHostController){
+fun  GoTNavHost(navHostController: NavHostController, viewHouseVM: ViewHouseVM, housesViewModel: HousesViewModel){
     NavHost(
         navController = navHostController,
         startDestination = GoTScreen.GetHouses.name
     ){
         composable(GoTScreen.GetHouses.name){
             GetHousesScreen(
+                housesViewModel,
                 onItemClick = {houseId ->
                     navHostController.navigate(
                         "${GoTScreen.ViewHouse.name}/$houseId"
@@ -91,7 +94,7 @@ fun  GoTNavHost(navHostController: NavHostController){
         ){
             val houseId = it.arguments?.getString("houseId")
             if (houseId != null) {
-                ViewHouseScreen(houseId = houseId)
+                ViewHouseScreen(viewHouseVM,houseId = houseId)
             }
         }
     }

@@ -2,7 +2,7 @@ package com.zatec.thrones.model
 
 import com.squareup.moshi.Json
 
-data class Character (
+data class GoTCharacter (
     @field: Json(name = "url")
     val url: String,
     @field: Json(name = "name")

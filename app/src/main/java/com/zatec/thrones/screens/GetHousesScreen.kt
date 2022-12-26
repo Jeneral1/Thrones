@@ -5,6 +5,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.pullrefresh.PullRefreshIndicator
 import androidx.compose.material.pullrefresh.pullRefresh
@@ -13,9 +15,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.BottomEnd
 import androidx.compose.ui.Alignment.Companion.Top
@@ -40,22 +40,42 @@ import com.zatec.thrones.ui.theme.Error_DESCRIPTION
 import com.zatec.thrones.ui.theme.QUOTE_DESCRIPTION
 import com.zatec.thrones.ui.theme.SWORD_DESCRIPTION
 import com.zatec.thrones.viewModel.HousesViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import java.io.IOException
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun GetHousesScreen(
-    viewModel: HousesViewModel = HousesViewModel(),
+    viewModel: HousesViewModel,
     onItemClick: (String) -> Unit = {},
 ) {
     val refreshing by viewModel.isRefreshing.collectAsState()
+    val pullRefreshState = rememberPullRefreshState(
+        refreshing = refreshing,
+        onRefresh = {
+            viewModel.refresh() }
+    )
 
-    val pullRefreshState = rememberPullRefreshState(refreshing = refreshing, onRefresh = { viewModel.refresh() })
+
+    val listState = rememberLazyListState()
+    LaunchedEffect(key1 = null){
+        delay(100)
+        listState.scrollToItem(viewModel.firstScrollIndex.value,viewModel.firstScrollOffset.value)
+    }
+
+    DisposableEffect(key1 = null){
+        onDispose {
+            viewModel.firstScrollIndex.value = listState.firstVisibleItemIndex
+            viewModel.firstScrollOffset.value = listState.firstVisibleItemScrollOffset
+        }
+    }
     Box(modifier = Modifier
         .fillMaxWidth()
         .fillMaxHeight()
-        .padding(5.dp)) {
+        .padding(5.dp)
+        .pullRefresh(pullRefreshState)
+    ) {
 
         Image(
             painter = painterResource(id = R.drawable.got3),
@@ -68,56 +88,69 @@ fun GetHousesScreen(
         val houseListItems: LazyPagingItems<House> = houseList.collectAsLazyPagingItems()
 
         Box (Modifier.pullRefresh(pullRefreshState)){
-            LazyColumn {
-                items(houseListItems) { item ->
-                    item?.let {
-                        HouseItemCard(house = it, onItemClick = onItemClick)
-                    }
-                }
-
-                houseListItems.apply {
-                    when {
-                        //loadState.prepend is LoadState.NotLoading -> Unit
-                        loadState.prepend is LoadState.Loading -> {
-                            item { Loading() }
-                        }
-                        loadState.prepend is LoadState.Error -> {
-                            item {
-                                ErrorCard(
-                                    message = if ((loadState.refresh as LoadState.Error).error is IOException)
-                                        "Unable to connect. Check connection" else "Ops! Something went wrong"
-                                )
-                            }
-                        }
-                        //loadState.refresh is LoadState.NotLoading -> Unit
-                        loadState.refresh is LoadState.Loading -> {
-                            item { Loading() }
-                        }
-                        loadState.refresh is LoadState.Error -> {
-                            item {
-                                ErrorCard(
-                                    message = if ((loadState.refresh as LoadState.Error).error is IOException)
-                                        "Unable to connect. Check connection" else "Ops! Something went wrong"
-                                )
-                            }
-                        }
-
-                        //loadState.prepend is LoadState.NotLoading -> {}
-                        loadState.append is LoadState.Loading -> {
-                            item { Loading() }
-                        }
-                    }
-                }
-            }
-
-            PullRefreshIndicator(
-                refreshing = refreshing,
-                state = pullRefreshState,
-                modifier = Modifier.align(TopCenter)
-            )
+            HousesList(houseListItems = houseListItems, onItemClick = onItemClick, listState = listState)
         }
+
+        PullRefreshIndicator(
+            refreshing = refreshing,
+            state = pullRefreshState,
+            modifier = Modifier
+                .align(TopCenter)
+                .absoluteOffset(y = (-10).dp)
+        )
     }
 
+}
+@Composable
+fun HousesList(
+    houseListItems: LazyPagingItems<House>,
+    listState: LazyListState = rememberLazyListState(),
+    onItemClick: (String) -> Unit
+){
+
+    LazyColumn (
+        state = listState
+            ){
+        items(houseListItems) { item ->
+            item?.let {
+                HouseItemCard(house = it, onItemClick = onItemClick)
+            }
+        }
+
+        houseListItems.apply {
+            when {
+                //loadState.prepend is LoadState.NotLoading -> Unit
+                loadState.prepend is LoadState.Loading -> {
+                    item { Loading() }
+                }
+                loadState.prepend is LoadState.Error -> {
+                    item {
+                        ErrorCard(
+                            message = if ((loadState.refresh as LoadState.Error).error is IOException)
+                                "Unable to connect. Check connection" else "Ops! Something went wrong"
+                        )
+                    }
+                }
+                //loadState.refresh is LoadState.NotLoading -> Unit
+                loadState.refresh is LoadState.Loading -> {
+                    item { Loading() }
+                }
+                loadState.refresh is LoadState.Error -> {
+                    item {
+                        ErrorCard(
+                            message = if ((loadState.refresh as LoadState.Error).error is IOException)
+                                "Unable to connect. Check connection" else "Ops! Something went wrong"
+                        )
+                    }
+                }
+
+                //loadState.prepend is LoadState.NotLoading -> {}
+                loadState.append is LoadState.Loading -> {
+                    item { Loading() }
+                }
+            }
+        }
+    }
 }
 
 @Composable
@@ -132,7 +165,7 @@ fun HouseItemCard(
             .fillMaxWidth()
             .padding(10.dp, 5.dp)
             .background(color = MaterialTheme.colorScheme.surfaceVariant)
-            .clickable{ onItemClick(house.url.substringAfterLast("/")) },
+            .clickable { onItemClick(house.url.substringAfterLast("/")) },
     ) {
         Column {
             Text(
@@ -193,7 +226,7 @@ fun HouseItemCard(
 private fun ErrorCard(message: String){
     Box(
         modifier = Modifier
-            .wrapContentHeight(Top)
+            .fillMaxHeight()
             .fillMaxWidth()
             .padding(10.dp, 10.dp)
             .background(color = MaterialTheme.colorScheme.error),
