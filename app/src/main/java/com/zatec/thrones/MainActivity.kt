@@ -12,11 +12,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.ViewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.zatec.thrones.screens.GetHousesScreen
 import com.zatec.thrones.screens.ViewHouseScreen
 import com.zatec.thrones.ui.theme.ThronesTheme
-import com.zatec.thrones.viewModel.HousesViewModel
 import com.zatec.thrones.viewModel.ViewHouseVM
 
 class MainActivity : ComponentActivity() {
@@ -41,7 +45,9 @@ class MainActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyGotApp(modifier: Modifier = Modifier, viewModel: ViewHouseVM) {
+fun MyGotApp(modifier: Modifier = Modifier, viewModel: ViewHouseVM = ViewHouseVM()) {
+    val navController = rememberNavController()
+
     Scaffold(
         topBar = {
             TopAppBar (title = {
@@ -52,10 +58,41 @@ fun MyGotApp(modifier: Modifier = Modifier, viewModel: ViewHouseVM) {
         }
     ) {
         Surface(
-            modifier = modifier.fillMaxSize().padding(it),
+            modifier = modifier
+                .fillMaxSize()
+                .padding(it),
             color = MaterialTheme.colorScheme.background
         ) {
-            ViewHouseScreen(viewModel, "https://www.anapioficeandfire.com/api/houses/10")
+            GoTNavHost(navHostController = navController)
+        }
+    }
+}
+
+@Composable
+fun  GoTNavHost(navHostController: NavHostController){
+    NavHost(
+        navController = navHostController,
+        startDestination = GoTScreen.GetHouses.name
+    ){
+        composable(GoTScreen.GetHouses.name){
+            GetHousesScreen(
+                onItemClick = {houseId ->
+                    navHostController.navigate(
+                        "${GoTScreen.ViewHouse.name}/$houseId"
+                    )
+                },
+            )
+        }
+        composable(
+            "${GoTScreen.ViewHouse.name}/{houseId}",
+            arguments = listOf(
+                navArgument("houseId"){type = NavType.StringType}
+            )
+        ){
+            val houseId = it.arguments?.getString("houseId")
+            if (houseId != null) {
+                ViewHouseScreen(houseId = houseId)
+            }
         }
     }
 }

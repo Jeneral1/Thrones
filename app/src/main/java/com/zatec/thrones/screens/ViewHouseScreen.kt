@@ -19,14 +19,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.zatec.thrones.R
+import com.zatec.thrones.ui.theme.BASE_URL
 import com.zatec.thrones.ui.theme.BKG_IMAGE_DESCRIPTION
 import com.zatec.thrones.ui.theme.Error_DESCRIPTION
 import com.zatec.thrones.viewModel.ViewHouseVM
 
 @Composable
-fun ViewHouseScreen(vm: ViewHouseVM, url: String){
+fun ViewHouseScreen(vm: ViewHouseVM = ViewHouseVM(), houseId: String){
     LaunchedEffect(key1 = Unit, block = {
-        vm.getHouse(url)
+        vm.getHouse("$BASE_URL/houses/$houseId")
     })
 
 
@@ -163,7 +164,7 @@ fun RowCard(title: String, value: List<String>){
 }
 
 @Composable
-fun GetCharacter(vm: ViewHouseVM, title: String, url: String){
+fun GetCharacter(vm: ViewHouseVM = ViewHouseVM(), title: String, url: String){
     LaunchedEffect(key1 = Unit, block = {
         vm.getCharacter(url)
     })

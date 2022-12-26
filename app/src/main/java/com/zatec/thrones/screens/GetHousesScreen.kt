@@ -45,7 +45,10 @@ import java.io.IOException
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun GetHousesScreen(viewModel: HousesViewModel, onItemClick: () -> Unit) {
+fun GetHousesScreen(
+    viewModel: HousesViewModel = HousesViewModel(),
+    onItemClick: (String) -> Unit = {},
+) {
     val refreshing by viewModel.isRefreshing.collectAsState()
 
     val pullRefreshState = rememberPullRefreshState(refreshing = refreshing, onRefresh = { viewModel.refresh() })
@@ -121,7 +124,7 @@ fun GetHousesScreen(viewModel: HousesViewModel, onItemClick: () -> Unit) {
 fun HouseItemCard(
     modifier: Modifier = Modifier,
     house: House,
-    onItemClick: () -> Unit
+    onItemClick: (String) -> Unit
 ){
     Card(
         modifier = modifier
@@ -129,7 +132,7 @@ fun HouseItemCard(
             .fillMaxWidth()
             .padding(10.dp, 5.dp)
             .background(color = MaterialTheme.colorScheme.surfaceVariant)
-            .clickable(onClick = onItemClick),
+            .clickable{ onItemClick(house.url.substringAfterLast("/")) },
     ) {
         Column {
             Text(
