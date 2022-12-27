@@ -16,16 +16,27 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+/**
+ * View model instance of [ViewModel] for . Used to encapsulate the
+ * data for the GetHousesScreen and hold the state some of the elements on the screen
+ * */
 class HousesViewModel: ViewModel() {
     var firstScrollIndex = mutableStateOf(0)
     var firstScrollOffset = mutableStateOf(0)
     private val  _isRefreshing = MutableStateFlow(false)
     val isRefreshing = _isRefreshing.asStateFlow()
 
+    /**
+     * get the [PagingData] from [HousesSource] into a PagingData stream in the coroutine scope [viewModelScope]
+     * */
     var house: Flow<PagingData<House>> = Pager(PagingConfig(pageSize = 20)){
         HousesSource()
     }.flow.cachedIn(viewModelScope)
 
+    /**
+     * a function that is launched in the coroutine scope [viewModelScope] to refresh the PagingData. The result is passed
+     * into the same PagingData stream from from the initial load
+     * */
     fun refresh() = viewModelScope.launch {
         _isRefreshing.update { true }
         delay(2000)

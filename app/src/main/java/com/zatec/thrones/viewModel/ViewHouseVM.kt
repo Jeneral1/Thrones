@@ -8,6 +8,10 @@ import androidx.lifecycle.viewModelScope
 import com.zatec.thrones.network.RetrofitClient
 import kotlinx.coroutines.launch
 
+/**
+ * View model instance of [ViewModel] for ViewHouseScreen. Used to encapsulate the
+ * data for the ViewHouseScreen and hold the state of the elements on the screen
+ * */
 class ViewHouseVM: ViewModel() {
 
     private var url by mutableStateOf("")
@@ -23,28 +27,36 @@ class ViewHouseVM: ViewModel() {
 
     var errorMessage: String by mutableStateOf("")
 
+    /**
+     * Launches a coroutineScope with [viewModelScope] to run an Https API call
+     * using [RetrofitClient.apiService] to get House and some GoTCharacters.
+     * The states of mutable variables are changed after the running in the coroutine scope
+     *
+     * @param[urL] the Url to the house
+     * */
     fun getHouse(urL: String){
             viewModelScope.launch {
+                val service = RetrofitClient.apiService
                 try {
-                    val house = RetrofitClient.apiService.getHouse(urL)
+                    val house = service.getHouse(urL)
                     house.let {
                         if (it.currentLord.isNotEmpty()) {
                             this.launch {
-                                val character = RetrofitClient.apiService.getCharacter(it.currentLord)
+                                val character = service.getCharacter(it.currentLord)
                                 currentLord = character.name
 
                             }
                         }
                         if (it.heir.isNotEmpty()) {
                             this.launch {
-                                val character = RetrofitClient.apiService.getCharacter(it.heir)
+                                val character = service.getCharacter(it.heir)
                                 heir = character.name
 
                             }
                         }
                         if (it.overlord.isNotEmpty()) {
                             this.launch {
-                                val overlordHouse = RetrofitClient.apiService.getHouse(it.overlord)
+                                val overlordHouse = service.getHouse(it.overlord)
                                 overlord = overlordHouse.name
                             }
                         }

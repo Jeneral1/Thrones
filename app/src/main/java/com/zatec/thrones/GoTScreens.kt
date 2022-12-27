@@ -1,5 +1,10 @@
 package com.zatec.thrones
 
+/**
+ * Enumerated Class of Screens(Pages) that can be navigated to.
+ *
+ *
+ * */
 enum class GoTScreen {
     GetHouses,
     ViewHouse;

@@ -16,13 +16,11 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.BottomEnd
 import androidx.compose.ui.Alignment.Companion.Top
 import androidx.compose.ui.Alignment.Companion.TopCenter
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -38,7 +36,6 @@ import androidx.paging.compose.items
 import com.zatec.thrones.R
 import com.zatec.thrones.model.House
 import com.zatec.thrones.ui.theme.BKG_IMAGE_DESCRIPTION
-import com.zatec.thrones.ui.theme.Error_DESCRIPTION
 import com.zatec.thrones.ui.theme.QUOTE_DESCRIPTION
 import com.zatec.thrones.ui.theme.SWORD_DESCRIPTION
 import com.zatec.thrones.viewModel.HousesViewModel
@@ -46,6 +43,13 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import java.io.IOException
 
+/**
+ * The main Composable for the viewing all the Houses
+ *
+ * @param viewModel An instance of the [HousesViewModel]which is used to encapsulate the data for the for this screen
+ * and used to keep the immutable state of some components on this screen
+ * @param onItemClick hoisting the action to happened when this item is clicked.
+ * */
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun GetHousesScreen(
@@ -104,6 +108,15 @@ fun GetHousesScreen(
     }
 
 }
+
+/**
+ * Composable function to populate all the  list items in [HousesList]
+ *
+ * @param houseListItems the list of items [House]s that is to be displayed
+ * @param listState holds the remembered [LazyListState]. the listState is hoisted to the parent
+ * calling composable which hands it over to the [HousesViewModel]
+ * @param onItemClick action to happened when this item is clicked which is hoisted to be handled by the NavController.
+ * */
 @Composable
 fun HousesList(
     houseListItems: LazyPagingItems<House>,
@@ -156,6 +169,13 @@ fun HousesList(
     }
 }
 
+/**
+ * Composable function to show list item in [HousesList]
+ *
+ * @param modifier declares the behaviour of the composable children of this composable
+ * @param house the data to be shown in this composable
+ * @param onItemClick hoisting the action to happened when this item is clicked.
+ * */
 @Composable
 fun HouseItemCard(
     modifier: Modifier = Modifier,
@@ -225,43 +245,11 @@ fun HouseItemCard(
     }
 }
 
-@Composable
-private fun ErrorCard(message: String){
-    Box(
-        modifier = Modifier
-            .fillMaxHeight()
-            .fillMaxWidth()
-            .padding(10.dp, 10.dp)
-            .background(color = MaterialTheme.colorScheme.error),
-    ) {
-
-        Row(
-            modifier = Modifier
-                .padding(5.dp)
-                .fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.error),
-                contentDescription = Error_DESCRIPTION,
-                colorFilter  =  ColorFilter.tint(MaterialTheme.colorScheme.onError),
-                modifier = Modifier
-                    .height(70.dp)
-                    .width(70.dp),
-                contentScale = ContentScale.FillBounds
-            )
-            Text(
-                text = message,
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Medium,
-                color = MaterialTheme.colorScheme.onError,
-                modifier = Modifier.fillMaxWidth()
-            )
-
-        }
-    }
-}
-
+/**
+ * Composable function to show loading progress effect
+ *
+ * @param modifier declares the behaviour of the composable children of this composable
+ * */
 @Composable
 private fun Loading(modifier: Modifier = Modifier){
     Box(modifier = modifier

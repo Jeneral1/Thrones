@@ -23,7 +23,14 @@ import com.zatec.thrones.screens.ViewHouseScreen
 import com.zatec.thrones.ui.theme.ThronesTheme
 import com.zatec.thrones.viewModel.HousesViewModel
 import com.zatec.thrones.viewModel.ViewHouseVM
-
+/**
+ * Application starts from [MainActivity] which inherits [ComponentActivity]
+ *
+ * objects of two @see[viewModels] which are view models for the two pages of the application
+ *
+ * [onCreate] function marks the begin of the activity. this function is override when the
+ * application starts with MainActivity
+ * */
 class MainActivity : ComponentActivity() {
     private val viewHouseVM: ViewHouseVM by viewModels()
     private val housesViewModel: HousesViewModel by viewModels()
@@ -44,7 +51,16 @@ class MainActivity : ComponentActivity() {
 }
 
 
-
+/**
+ * MyGotApp is a composable function that sets the scaffold which contain the App Bar and allows for setting the background
+ * by calling [Surface]. The app implements the same Scaffold for all the other screens
+ *
+ * @param[modifier] That declares the behaviour of the composable children of this class
+ * @param[viewHouseVM] An instance of the [ViewHouseVM] which is used to encapsulate the data for the [ViewHouseScreen].
+ * It is used to declare the behaviour of the children composable of this class
+ * @param[housesViewModel] An instance of the [HousesViewModel]which is used to encapsulate the data for the
+ * [GetHousesScreen]. it is used to declare the behaviour of the children composable of this class
+ * */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyGotApp(modifier: Modifier = Modifier, viewHouseVM: ViewHouseVM, housesViewModel: HousesViewModel) {
@@ -74,6 +90,19 @@ fun MyGotApp(modifier: Modifier = Modifier, viewHouseVM: ViewHouseVM, housesView
     }
 }
 
+
+/**
+ * GoTNavHost is a composable function that is used to handel the navigation in this application. It calls
+ * NavHost function which provides in place in the Compose hierarchy for self contained
+ * navigation to occur. It uses the instance of [NavHostController] to navigate to any given composable
+ * with the Navigation graph.
+ *
+ * @param[navHostController] an instance of [NavHostController] which is used to navigate to any composable
+ * @param[viewHouseVM] An object of the [ViewHouseVM] which is used to encapsulate the data for the [ViewHouseScreen].
+ * It is used to declare the behaviour of the children composable of this class
+ * @param[housesViewModel] An object of the [HousesViewModel]which is used to encapsulate the data for the
+ * [GetHousesScreen]. it is used to declare the behaviour of the children composable of this class
+ * */
 @Composable
 fun  GoTNavHost(navHostController: NavHostController,
                 viewHouseVM: ViewHouseVM = ViewHouseVM(),
