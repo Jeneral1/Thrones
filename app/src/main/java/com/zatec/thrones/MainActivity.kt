@@ -54,7 +54,11 @@ fun MyGotApp(modifier: Modifier = Modifier, viewHouseVM: ViewHouseVM, housesView
         topBar = {
             TopAppBar (title = {
                 Column {
-                    Text(text = "Game of Thrones", style = MaterialTheme.typography.titleLarge, fontFamily = FontFamily.Cursive, fontSize = 30.sp)
+                    Text(
+                        text = "Game of Thrones",
+                        style = MaterialTheme.typography.titleLarge,
+                        fontFamily = FontFamily.Cursive,
+                        fontSize = 30.sp)
                     Text(text = "Houses", style = MaterialTheme.typography.titleMedium)
                 }})
         }
@@ -71,7 +75,10 @@ fun MyGotApp(modifier: Modifier = Modifier, viewHouseVM: ViewHouseVM, housesView
 }
 
 @Composable
-fun  GoTNavHost(navHostController: NavHostController, viewHouseVM: ViewHouseVM, housesViewModel: HousesViewModel){
+fun  GoTNavHost(navHostController: NavHostController,
+                viewHouseVM: ViewHouseVM = ViewHouseVM(),
+                housesViewModel: HousesViewModel = HousesViewModel()
+){
     NavHost(
         navController = navHostController,
         startDestination = GoTScreen.GetHouses.name

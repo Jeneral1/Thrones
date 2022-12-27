@@ -9,7 +9,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import retrofit2.http.Url
 
-interface RetrofitAPIService{
+interface RetrofitAPIEndpoint{
     @GET("houses")
     suspend fun getHousesList(@Query("page") page: Int) : List<House>
 
@@ -22,13 +22,13 @@ interface RetrofitAPIService{
 }
 
 object RetrofitClient{
-    private fun getClient(): Retrofit{
+    fun getClient(): Retrofit{
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
     }
 
-    val apiService: RetrofitAPIService =
-        getClient().create(RetrofitAPIService::class.java)
+    val apiService: RetrofitAPIEndpoint =
+        getClient().create(RetrofitAPIEndpoint::class.java)
 }

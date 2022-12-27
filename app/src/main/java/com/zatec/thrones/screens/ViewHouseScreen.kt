@@ -14,6 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -34,7 +36,9 @@ fun ViewHouseScreen(vm: ViewHouseVM = ViewHouseVM(), houseId: String){
     Box(modifier = Modifier
         .fillMaxWidth()
         .fillMaxHeight()
-        .padding(5.dp)) {
+        .padding(5.dp)
+        .semantics { contentDescription = "View House Screen" }
+    ) {
 
         Image(
             painter = painterResource(id = R.drawable.got4),
