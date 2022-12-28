@@ -44,7 +44,7 @@ import kotlinx.coroutines.flow.Flow
 import java.io.IOException
 
 /**
- * The main Composable for the viewing all the Houses
+ * Get houses screen
  *
  * @param viewModel An instance of the [HousesViewModel]which is used to encapsulate the data for the for this screen
  * and used to keep the immutable state of some components on this screen
@@ -110,7 +110,7 @@ fun GetHousesScreen(
 }
 
 /**
- * Composable function to populate all the  list items in [HousesList]
+ * Houses list
  *
  * @param houseListItems the list of items [House]s that is to be displayed
  * @param listState holds the remembered [LazyListState]. the listState is hoisted to the parent
@@ -170,12 +170,13 @@ fun HousesList(
 }
 
 /**
- * Composable function to show list item in [HousesList]
+ * House item card
  *
- * @param modifier declares the behaviour of the composable children of this composable
- * @param house the data to be shown in this composable
- * @param onItemClick hoisting the action to happened when this item is clicked.
- * */
+ * @param modifier
+ * @param house
+ * @param onItemClick
+ * @receiver
+ */
 @Composable
 fun HouseItemCard(
     modifier: Modifier = Modifier,
@@ -206,7 +207,7 @@ fun HouseItemCard(
                 .padding(5.dp, 5.dp)) {
                 Row(modifier = modifier.fillMaxWidth(.4f)) {
                     Image(
-                        painter = painterResource(id = R.drawable.sword),
+                        painter = painterResource(id = R.drawable.got1),
                         contentDescription = SWORD_DESCRIPTION,
                         colorFilter = ColorFilter.tint(
                             color = MaterialTheme.colorScheme.onSecondaryContainer

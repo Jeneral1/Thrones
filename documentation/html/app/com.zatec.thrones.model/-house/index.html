@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>House</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>app</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="app::com.zatec.thrones.model/House///PointingToDeclaration//492899073">
+  <div class="breadcrumbs"><a href="../../../index.html">app</a><span class="delimiter">/</span><a href="../index.html">com.zatec.thrones.model</a><span class="delimiter">/</span><span class="current">House</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>House</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">House</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>url<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>region<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>coatOfArms<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>words<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>titles<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>seats<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>currentLord<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>heir<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>overlord<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><p class="paragraph">Data class that models a Game of Thrones House</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Properties">Properties</button><button class="section-tab" data-togglable="Parameters">Parameters</button></div>
+    <div class="tabs-section-body">
+      <h4 class="">Parameters</h4>
+      <div data-togglable="Parameters">
+        <div class="platform-hinted WithExtraAttributes" data-platform-hinted="data-platform-hinted" data-togglable="Parameters"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><u><span><span>url</span></span></u></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Url of the House of type:{@link String}</p></div></div></div></div></div><div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Name of the House of type:{@link String}</p></div></div></div></div></div><div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><u><span><span>region</span></span></u></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">region of the House of type:{@link String}</p></div></div></div></div></div><div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><u><span>coat</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Arms</span></span></u></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Coat of Arms of the House of type:{@link String}</p></div></div></div></div></div><div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><u><span><span>words</span></span></u></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Slogan of the House of type:{@link String}</p></div></div></div></div></div><div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><u><span><span>titles</span></span></u></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">List of Titles {@link String} which are held by the house</p></div></div></div></div></div><div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><u><span><span>seats</span></span></u></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">List of Seats {@link String} which are held by the house</p></div></div></div></div></div><div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><u><span>current</span><wbr></wbr><span><span>Lord</span></span></u></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Url of a <a href="../-go-t-character/index.html">GoTCharacter</a> rules the house</p></div></div></div></div></div><div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><u><span><span>heir</span></span></u></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Url of a <a href="../-go-t-character/index.html">GoTCharacter</a> who is the heir to the throne of the House</p></div></div></div></div></div><div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><u><span><span>overlord</span></span></u></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Url of the <a href="index.html">House</a> which this House answers to</p></div></div></div></div></div></div></div></div></div>
+      </div>
+      <h2 class="tabbedcontent">Constructors</h2>
+      <div class="table" data-togglable="Constructors"><a data-name="228401442%2FConstructors%2F492899073" anchor-label="House" id="228401442%2FConstructors%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+          <div class="main-subrow keyValue TabbedContent">
+            <div class=""><span class="inline-flex">
+                <div><a href="-house.html"><span><span>House</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="228401442%2FConstructors%2F492899073"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-house.html"><span class="token function">House</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">url<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">region<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">coatOfArms<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">words<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">titles<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">seats<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">currentLord<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">heir<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">overlord<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="">Properties</h2>
+      <div class="table" data-togglable="Properties"><a data-name="2011843112%2FProperties%2F492899073" anchor-label="coatOfArms" id="2011843112%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="coat-of-arms.html"><span>coat</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Arms</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2011843112%2FProperties%2F492899073"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><a data-name="2011843112%2FProperties%2F492899073" anchor-label="coatOfArms" id="2011843112%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="com.squareup.moshi/Json///PointingToDeclaration/"><span class="token annotation builtin">Json</span></span><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;coatOfArms&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword"></span><span class="token keyword">val </span><a href="coat-of-arms.html">coatOfArms</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1204179479%2FProperties%2F492899073" anchor-label="currentLord" id="1204179479%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="current-lord.html"><span>current</span><wbr></wbr><span><span>Lord</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1204179479%2FProperties%2F492899073"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><a data-name="1204179479%2FProperties%2F492899073" anchor-label="currentLord" id="1204179479%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="com.squareup.moshi/Json///PointingToDeclaration/"><span class="token annotation builtin">Json</span></span><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;currentLord&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword"></span><span class="token keyword">val </span><a href="current-lord.html">currentLord</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-611206673%2FProperties%2F492899073" anchor-label="heir" id="-611206673%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="heir.html"><span><span>heir</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-611206673%2FProperties%2F492899073"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><a data-name="-611206673%2FProperties%2F492899073" anchor-label="heir" id="-611206673%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="com.squareup.moshi/Json///PointingToDeclaration/"><span class="token annotation builtin">Json</span></span><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;heir&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword"></span><span class="token keyword">val </span><a href="heir.html">heir</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-580386326%2FProperties%2F492899073" anchor-label="name" id="-580386326%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="name.html"><span><span>name</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-580386326%2FProperties%2F492899073"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><a data-name="-580386326%2FProperties%2F492899073" anchor-label="name" id="-580386326%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="com.squareup.moshi/Json///PointingToDeclaration/"><span class="token annotation builtin">Json</span></span><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;name&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword"></span><span class="token keyword">val </span><a href="name.html">name</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-417130388%2FProperties%2F492899073" anchor-label="overlord" id="-417130388%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="overlord.html"><span><span>overlord</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-417130388%2FProperties%2F492899073"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><a data-name="-417130388%2FProperties%2F492899073" anchor-label="overlord" id="-417130388%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="com.squareup.moshi/Json///PointingToDeclaration/"><span class="token annotation builtin">Json</span></span><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;overlord&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword"></span><span class="token keyword">val </span><a href="overlord.html">overlord</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="34322337%2FProperties%2F492899073" anchor-label="region" id="34322337%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="region.html"><span><span>region</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="34322337%2FProperties%2F492899073"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><a data-name="34322337%2FProperties%2F492899073" anchor-label="region" id="34322337%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="com.squareup.moshi/Json///PointingToDeclaration/"><span class="token annotation builtin">Json</span></span><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;region&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword"></span><span class="token keyword">val </span><a href="region.html">region</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-410652393%2FProperties%2F492899073" anchor-label="seats" id="-410652393%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="seats.html"><span><span>seats</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-410652393%2FProperties%2F492899073"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><a data-name="-410652393%2FProperties%2F492899073" anchor-label="seats" id="-410652393%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="com.squareup.moshi/Json///PointingToDeclaration/"><span class="token annotation builtin">Json</span></span><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;seats&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword"></span><span class="token keyword">val </span><a href="seats.html">seats</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-433741990%2FProperties%2F492899073" anchor-label="titles" id="-433741990%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="titles.html"><span><span>titles</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-433741990%2FProperties%2F492899073"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><a data-name="-433741990%2FProperties%2F492899073" anchor-label="titles" id="-433741990%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="com.squareup.moshi/Json///PointingToDeclaration/"><span class="token annotation builtin">Json</span></span><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;titles&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword"></span><span class="token keyword">val </span><a href="titles.html">titles</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1039276074%2FProperties%2F492899073" anchor-label="url" id="-1039276074%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="url.html"><span><span>url</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1039276074%2FProperties%2F492899073"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><a data-name="-1039276074%2FProperties%2F492899073" anchor-label="url" id="-1039276074%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="com.squareup.moshi/Json///PointingToDeclaration/"><span class="token annotation builtin">Json</span></span><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;url&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword"></span><span class="token keyword">val </span><a href="url.html">url</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-265814564%2FProperties%2F492899073" anchor-label="words" id="-265814564%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="words.html"><span><span>words</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-265814564%2FProperties%2F492899073"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><a data-name="-265814564%2FProperties%2F492899073" anchor-label="words" id="-265814564%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="com.squareup.moshi/Json///PointingToDeclaration/"><span class="token annotation builtin">Json</span></span><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;words&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword"></span><span class="token keyword">val </span><a href="words.html">words</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
+</html>
